@@ -1,7 +1,8 @@
 import aiosqlite
+import os
 from datetime import datetime, timezone
 
-DB_PATH = "tbot.db"
+DB_PATH = os.getenv("DB_PATH", "tbot.db")
 
 
 async def init_db():

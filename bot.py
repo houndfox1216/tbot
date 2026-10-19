@@ -3,6 +3,10 @@ import os
 from datetime import datetime, timezone
 
 from dotenv import load_dotenv
+
+# Must run before importing database, which reads DB_PATH at import time
+load_dotenv()
+
 from telegram import Update, ChatMember
 from telegram.constants import ChatMemberStatus
 from telegram.ext import (
@@ -15,8 +19,6 @@ from telegram.ext import (
 )
 
 import database as db
-
-load_dotenv()
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 DEFAULT_INACTIVE_DAYS = int(os.getenv("DEFAULT_INACTIVE_DAYS", "30"))
